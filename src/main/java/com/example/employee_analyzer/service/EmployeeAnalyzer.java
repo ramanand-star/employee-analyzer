@@ -17,7 +17,10 @@ public class EmployeeAnalyzer {
 
     public void readCSV(String filePath) throws IOException {
         try (Reader in = new FileReader(filePath)) {
-            Iterable<CSVRecord> records = CSVFormat.DEFAULT.withHeader("Id", "firstName", "lastName", "salary", "managerId").withFirstRecordAsHeader().parse(in);
+            Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                    .withHeader("Id", "firstName", "lastName", "salary", "managerId")
+                    .withFirstRecordAsHeader()
+                    .parse(in);
             for (CSVRecord record : records) {
                 Employee employee = new Employee(
                         record.get("Id"),
